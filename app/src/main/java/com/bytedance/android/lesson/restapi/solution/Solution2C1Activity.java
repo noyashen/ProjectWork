@@ -9,12 +9,18 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.bytedance.android.lesson.restapi.solution.bean.Cat;
+import com.bytedance.android.lesson.restapi.solution.utils.NetworkUtils;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 import static android.support.v7.widget.RecyclerView.Adapter;
 import static android.support.v7.widget.RecyclerView.ViewHolder;
@@ -25,6 +31,10 @@ public class Solution2C1Activity extends AppCompatActivity {
     public Button mBtn;
     public RecyclerView mRv;
     private List<Cat> mCats = new ArrayList<>();
+    public static String myurl ;
+    static {
+        myurl = "https://api.thecatapi.com/v1/images/search?limit=5";
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,8 +57,8 @@ public class Solution2C1Activity extends AppCompatActivity {
                 ImageView iv = (ImageView) viewHolder.itemView;
 
                 // TODO-C1 (4) Uncomment these 2 lines, assign image url of Cat to this url variable
-//                String url = mCats.get(i).;
-//                Glide.with(iv.getContext()).load(url).into(iv);
+                String url = mCats.get(i).caturl;
+                Glide.with(iv.getContext()).load(url).into(iv);
             }
 
             @Override public int getItemCount() {
@@ -67,6 +77,16 @@ public class Solution2C1Activity extends AppCompatActivity {
         mBtn.setText(R.string.requesting);
         mBtn.setEnabled(false);
 
+        NetworkUtils.getResponseWithRetrofitAsync(new Callback<List<Cat>>() {
+            @Override public void onResponse(Call<List<Cat>> call, Response<List<Cat>> response) {
+                restoreBtn();
+                loadPics(response.body());
+            }
+
+            @Override public void onFailure(Call<List<Cat>> call, Throwable t) {
+                restoreBtn();
+            }
+        });
         // TODO-C1 (3) Send request for 5 random cats here, don't forget to use {@link retrofit2.Call#enqueue}
         // Call restoreBtn() and loadPics(response.body()) if success
         // Call restoreBtn() if failure
