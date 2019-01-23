@@ -9,7 +9,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.bytedance.android.lesson.restapi.solution.bean.Cat;
@@ -56,8 +55,7 @@ public class Solution2C1Activity extends AppCompatActivity {
             public void onBindViewHolder(@NonNull ViewHolder viewHolder, int i) {
                 ImageView iv = (ImageView) viewHolder.itemView;
 
-                // TODO-C1 (4) Uncomment these 2 lines, assign image url of Cat to this url variable
-                String url = mCats.get(i).caturl;
+                String url = mCats.get(i).catUrl;
                 Glide.with(iv.getContext()).load(url).into(iv);
             }
 
@@ -87,9 +85,6 @@ public class Solution2C1Activity extends AppCompatActivity {
                 restoreBtn();
             }
         });
-        // TODO-C1 (3) Send request for 5 random cats here, don't forget to use {@link retrofit2.Call#enqueue}
-        // Call restoreBtn() and loadPics(response.body()) if success
-        // Call restoreBtn() if failure
 
     }
 

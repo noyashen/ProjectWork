@@ -8,6 +8,6 @@ import com.google.gson.annotations.SerializedName;
  */
 public class Cat {
     @SerializedName("url")
-    public String caturl;
+    public String catUrl;
 
 }

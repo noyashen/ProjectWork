@@ -1,9 +1,11 @@
 package com.bytedance.android.lesson.restapi.solution.newtork;
 
+import com.bytedance.android.lesson.restapi.solution.bean.Feed;
 import com.bytedance.android.lesson.restapi.solution.bean.FeedResponse;
 import com.bytedance.android.lesson.restapi.solution.bean.PostVideoResponse;
 
 import okhttp3.MultipartBody;
+import okhttp3.RequestBody;
 import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.Multipart;
@@ -16,6 +18,10 @@ import retrofit2.http.Query;
  * @date 2019.01.17 20:38
  */
 public interface IMiniDouyinService {
-    // TODO-C2 (7) Implement your MiniDouyin PostVideo Request here, url: (POST) http://10.108.10.39:8080/minidouyin/video
-    // TODO-C2 (8) Implement your MiniDouyin Feed Request here, url: http://10.108.10.39:8080/minidouyin/feed
+    @Multipart @POST("minidouyin/video") Call<PostVideoResponse> postVideo(@Part("studentId") RequestBody id,
+                                                                @Part("userName") RequestBody name,
+                                                                @Part MultipartBody.Part cover_image,
+                                                                @Part MultipartBody.Part video);
+    @GET("minidouyin/feed") Call<FeedResponse> fetchFeed();
+
 }
