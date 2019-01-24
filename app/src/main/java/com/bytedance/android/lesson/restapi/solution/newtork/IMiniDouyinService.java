@@ -18,8 +18,8 @@ import retrofit2.http.Query;
  * @date 2019.01.17 20:38
  */
 public interface IMiniDouyinService {
-    @Multipart @POST("minidouyin/video") Call<PostVideoResponse> postVideo(@Part("studentId") RequestBody id,
-                                                                @Part("userName") RequestBody name,
+    @Multipart @POST("minidouyin/video") Call<PostVideoResponse> postVideo(@Part("student_id") RequestBody id,
+                                                                @Part("user_name") RequestBody name,
                                                                 @Part MultipartBody.Part cover_image,
                                                                 @Part MultipartBody.Part video);
     @GET("minidouyin/feed") Call<FeedResponse> fetchFeed();

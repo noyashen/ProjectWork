@@ -19,23 +19,13 @@
 
 
     <Button
-        android:id="@+id/btn_s2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        android:text="@string/solution_2_c2"
-        android:onClick="Solution2C2"
-        app:layout_constraintBottom_toTopOf="@id/tv"
-    />
-
-    <Button
         android:id="@+id/btn_s1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
         android:text="@string/solution_2_c1"
-        android:onClick="Solution2C1"
-        app:layout_constraintBottom_toTopOf="@id/btn_s2"
+        android:onClick="Solution2C2"
+        app:layout_constraintBottom_toTopOf="@id/tv"
     />
 
 

@@ -7,15 +7,15 @@ import com.google.gson.annotations.SerializedName;
  * @date 2019.01.20 14:18
  */
 public class Feed {
-    @SerializedName("imageUrl")
+    @SerializedName("image_url")
     public String imageUrl;
 
-    @SerializedName("videoUrl")
+    @SerializedName("video_url")
     public String videoUrl;
 
-    @SerializedName("studentId")
+    @SerializedName("student_id")
     public String studentId;
 
-    @SerializedName("userName")
+    @SerializedName("user_name")
     public String userName;
 }

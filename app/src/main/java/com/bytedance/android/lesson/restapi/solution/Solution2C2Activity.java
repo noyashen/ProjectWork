@@ -96,6 +96,19 @@ public class Solution2C2Activity extends AppCompatActivity {
 
                 String url = mFeeds.get(i).imageUrl;
                 Glide.with(iv.getContext()).load(url).into(iv);
+
+
+                iv.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+
+                        Intent intent = new Intent(Solution2C2Activity.this, DetailPlayerActivity.class);
+                        intent.putExtra("videoUrl", mFeeds.get(i).videoUrl);
+                        startActivity(intent);
+                    }
+                });
+
+
             }
 
             @Override public int getItemCount() {
@@ -158,7 +171,7 @@ public class Solution2C2Activity extends AppCompatActivity {
                 enqueue(new Callback<PostVideoResponse>() {
                     @Override
                     public void onResponse(Call<PostVideoResponse> call, Response<PostVideoResponse> response) {
-                        Toast.makeText(Solution2C2Activity.this,"Success",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(Solution2C2Activity.this,"Success " + response.body(),Toast.LENGTH_SHORT).show();
                     }
 
                     @Override
