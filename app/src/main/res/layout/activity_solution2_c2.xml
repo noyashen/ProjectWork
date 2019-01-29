@@ -20,7 +20,17 @@
             android:layout_margin="16dp"
             android:layout_weight="1"
             android:text="@string/select_an_image"
+            android:textSize="12sp"
         />
+        <Button
+            android:id="@+id/btn_custom"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="16dp"
+            android:layout_weight="1"
+            android:text="@string/take_a_video"
+            android:textSize="12sp"
+            />
 
         <Button
             android:id="@+id/btn_refresh"
@@ -30,6 +40,7 @@
             android:layout_weight="1"
             android:onClick="fetchFeed"
             android:text="@string/refresh_feed"
+            android:textSize="12sp"
         />
     </LinearLayout>
 

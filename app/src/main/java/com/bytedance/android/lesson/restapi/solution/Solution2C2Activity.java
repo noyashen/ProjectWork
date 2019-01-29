@@ -1,9 +1,11 @@
 package com.bytedance.android.lesson.restapi.solution;
 
+import android.Manifest;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -38,6 +40,7 @@ public class Solution2C2Activity extends AppCompatActivity {
 
     private static final int PICK_IMAGE = 1;
     private static final int PICK_VIDEO = 2;
+    private static final int REQUEST_VIDEO_IMG_CAPTURE = 1;
     private static final String TAG = "Solution2C2Activity";
     private RecyclerView mRv;
     private List<Feed> mFeeds = new ArrayList<>();
@@ -45,6 +48,7 @@ public class Solution2C2Activity extends AppCompatActivity {
     private Uri mSelectedVideo;
     public Button mBtn;
     private Button mBtnRefresh;
+    private Button mBntkVideo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -76,6 +80,14 @@ public class Solution2C2Activity extends AppCompatActivity {
         });
 
         mBtnRefresh = findViewById(R.id.btn_refresh);
+        findViewById(R.id.btn_custom).setOnClickListener(v -> {
+            //在这里申请相机、麦克风、存储的权限
+            ActivityCompat.requestPermissions(Solution2C2Activity.this,new String[]{
+                    Manifest.permission.CAMERA,Manifest.permission.WRITE_APN_SETTINGS,Manifest.permission.RECORD_AUDIO
+            },REQUEST_VIDEO_IMG_CAPTURE);
+            startActivity(new Intent(Solution2C2Activity.this, RecordVideoActivity.class));
+
+        });
     }
 
     private void initRecyclerView() {
@@ -165,8 +177,8 @@ public class Solution2C2Activity extends AppCompatActivity {
         // if success, make a text Toast and show
         Retrofit retrofit = RetrofitManager.get("http://10.108.10.39:8080");
 
-        retrofit.create(IMiniDouyinService.class).postVideo(RequestBody.create(MediaType.get("text/plain"),"1120151026"),
-                RequestBody.create(MediaType.get("text/plain"),"何龙"),
+        retrofit.create(IMiniDouyinService.class).postVideo(RequestBody.create(MediaType.get("text/plain"),"3220180850"),
+                RequestBody.create(MediaType.get("text/plain"),"Rita"),
                 getMultipartFromUri("cover_image",mSelectedImage), getMultipartFromUri("video",mSelectedVideo)).
                 enqueue(new Callback<PostVideoResponse>() {
                     @Override

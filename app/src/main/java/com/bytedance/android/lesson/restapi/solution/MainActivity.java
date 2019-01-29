@@ -22,11 +22,6 @@ public class MainActivity extends AppCompatActivity {
         });
 
     }
-
-    public void Solution2C1(View view) {
-        startActivity(new Intent(this, Solution2C1Activity.class));
-    }
-
     public void Solution2C2(View view) {
         startActivity(new Intent(this, Solution2C2Activity.class));
 

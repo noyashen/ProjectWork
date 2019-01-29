@@ -2,9 +2,14 @@
 <manifest xmlns:tools="http://schemas.android.com/tools" package="com.bytedance.android.lesson.restapi.solution"
           xmlns:android="http://schemas.android.com/apk/res/android">
 
+    <uses-feature android:name="android.hardware.camera" />
+    <uses-feature android:name="android.hardware.camera.autofocus" />
+
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
 
     <application
@@ -31,13 +36,15 @@
             android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat" />
 
-        <activity android:name=".Solution2C1Activity"
-                  android:screenOrientation="portrait"
-                  android:label="@string/solution_2_c1">
-        </activity>
         <activity android:name=".Solution2C2Activity"
                   android:screenOrientation="portrait"
                   android:label="@string/solution_2_c2">
+        </activity>
+        <activity
+            android:name=".RecordVideoActivity"
+            android:label="@string/title_activity_record_video"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar" >
         </activity>
     </application>
 
