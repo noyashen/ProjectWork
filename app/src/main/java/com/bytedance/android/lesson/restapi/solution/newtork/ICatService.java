@@ -14,5 +14,6 @@ import retrofit2.http.Query;
  * @date 2019.01.15 16:42
  */
 public interface ICatService {
-    @GET("v1/images/search?limit=5") Call<List<Cat>> randomCat();
+    String HOST = "https://api.thecatapi.com/";
+    @GET("v1/images/search") Call<List<Cat>> randomCat(@Query("limit") int limit);
 }
